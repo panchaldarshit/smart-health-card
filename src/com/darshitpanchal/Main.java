@@ -32,13 +32,7 @@ public class Main {
 		KeyPair keyPair = KeyPairData.generateKeyPair();
 		JWK jwkKeyPair = KeyPairData.generateJwkKey(keyPair);
 
-		// Private Key hardcoded for testing
-		String testJwkJson = "{\"kty\":\"EC\",\"d\":\"QM2mj1m8B4wM4bV2HgPhGhBBqVh7TvVrpsidmgzWYyQ\",\"use\":\"sig\",\"crv\":\"P-256\",\"kid\":\"PBhGG7BiQdpr6OxYcHxKUnnPzNPdy6VhMEKLbFiGycA\",\"x\":\"xwGorbxo6B5Cn7Bsrcq32S6_CriNpmFCWzx_flucf_g\",\"y\":\"_6yBcVHtEwobdSw_Z9-IUsaXGIsxvMfOxEXOiqieyW4\",\"alg\":\"ES256\"}";
-		JWK testJwkKeyPair = JWK.parse(testJwkJson);
-		jwkKeyPair = testJwkKeyPair;
-
-		// Compute the thumbprint of the private key
-		String jwkThumbPrint = String.valueOf(jwkKeyPair.computeThumbprint());
+		String jwkThumbPrint = KeyPairData.generateThumbprint(jwkKeyPair);
 
 		System.out.println("JWK Key Pair :::" + jwkKeyPair);
 		System.out.println("JWK Thumbprint ::: " + jwkThumbPrint);
